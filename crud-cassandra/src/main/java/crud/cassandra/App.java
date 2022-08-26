@@ -1,6 +1,7 @@
 package crud.cassandra;
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
+import static com.datastax.driver.core.DataType.uuid;
 import com.datastax.driver.core.LocalDate;
 import com.datastax.driver.core.PreparedStatement;
 import com.datastax.driver.core.Session;
@@ -26,13 +27,17 @@ public class App {
         
         long tempoInicial = System.currentTimeMillis();
         //CREATE
-        pessoaMapper.save(new Pessoa(4,"222.222.222-22", "José Barros", LocalDate.fromYearMonthDay(1973, 10 , 16), List.of("Java, HTML, CSS, JS, PostgresSQL, SpringBoot")));
-        
-        
+        for (int i = 0; i < 1000; i++){
+                  pessoaMapper.save(new Pessoa(i, "333.333.333-33", "Rhavy Maia Guedes", LocalDate.fromYearMonthDay(1988, 11 , 12), List.of("Java, HTML, CSS, JS, PostgresSQL, SpringBoot")));
+
+        }
+  
         //READ
         System.out.println("\nPessoas Cadastradas: ");
         System.out.println(pessoaMapper.get(1));
-        
+        System.out.println(pessoaMapper.get(2));
+        System.out.println(pessoaMapper.get(3));
+        System.out.println(pessoaMapper.get(4));
         
         //UPDATE
         PreparedStatement preparedStatement = session.prepare("UPDATE pessoa SET nome = ? WHERE id = ?");

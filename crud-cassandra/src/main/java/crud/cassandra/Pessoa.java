@@ -9,7 +9,7 @@ import java.util.List;
 public class Pessoa {
     
     @PartitionKey
-    private int id;
+    private Integer id;
     private String cpf;
     private String nome;
     private LocalDate nascimento;
@@ -18,7 +18,7 @@ public class Pessoa {
     public Pessoa(){
     }
 
-    public Pessoa(int id,String cpf, String nome, LocalDate nascimento, List<String> formacao) {
+    public Pessoa(Integer id,String cpf, String nome, LocalDate nascimento, List<String> formacao) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -27,11 +27,11 @@ public class Pessoa {
     }
     
     @PartitionKey
-    public int getId(){
+    public Integer getId(){
         return id;
     }
     
-    public void setId(int id){
+    public void setId(Integer id){
         this.id = id;
     }
     
